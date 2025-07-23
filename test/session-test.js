@@ -22,7 +22,7 @@ if (!process.env.IN_TRAVIS) {
       it('logs in', function (done) {
         session.
           post('/login').
-          send({ email: 'joesmith@opensoc.dev', password: 'opensoc' }).
+          send({ email: process.env.TEST_EMAIL, password: process.env.TEST_PASSWORD }).
           end(function (err, res) {
             // redirects to home
             assert.equal(res.header['location'], '/');
